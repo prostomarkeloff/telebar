@@ -51,7 +51,7 @@ class progressify[T]:
 
     async def __anext__(self) -> T:
         if not self._message or not self._bar:
-            raise ValueError("Message or bar are missingß")
+            raise ValueError("Message or bar are missing")
 
         async for item in self.iterator:
             self._bar.inc_index()
