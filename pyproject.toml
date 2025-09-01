@@ -1,0 +1,16 @@
+[project]
+name = "telebar"
+version = "0.5.0"
+description = "Fancy progress bars for your Telegram bots!"
+readme = "README.md"
+authors = [{ name = "prostomarkeloff" }]
+license = "MIT"
+requires-python = ">=3.13"
+dependencies = ["telegrinder"]
+
+[tool.uv.sources]
+telegrinder = { git = "https://github.com/timoniq/telegrinder", rev = "dev" }
+
+[project.urls]
+Homepage = "https://github.com/prostomarkeloff/telebar"
+Repository = "https://github.com/prostomarkeloff/telebar"
