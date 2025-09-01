@@ -1,4 +1,4 @@
-# < telebar
+# 🌙 telebar
 
 **Fancy progress bars for your Telegram bots!**
 
@@ -6,7 +6,7 @@ Transform boring progress tracking into visually stunning animated bars that you
 
 *Part of the [awesome-telegrinder](https://github.com/prostomarkeloff/awesome-telegrinder) family* 🚀
 
-## =� Installation
+## 📦 Installation
 
 ### From GitHub
 
@@ -20,12 +20,12 @@ pip install git+https://github.com/prostomarkeloff/telebar.git
 uv add git+https://github.com/prostomarkeloff/telebar.git
 ```
 
-## =� Requirements
+## 📋 Requirements
 
 - Python 3.13+
 - [telegrinder](https://github.com/timoniq/telegrinder)
 
-## � Quick Start
+## ⚡ Quick Start
 
 ```python
 import asyncio
@@ -39,7 +39,7 @@ bot = Telegrinder(api)
 @bot.on.message(Text("/start"))
 async def start(message: Message) -> None:
     ans = (await message.answer("Processing your request...")).unwrap()
-    
+
     # Magic happens here! (
     async for _ in progressify(range(10), 10).at(ans):
         await asyncio.sleep(1)
@@ -47,15 +47,15 @@ async def start(message: Message) -> None:
 bot.run_forever()
 ```
 
-## <� Available Progress Bars
+## 🎛️ Available Progress Bars
 
-### < MoonBar - Lunar Progress Magic
+### 🌙 MoonBar - Lunar Progress Magic
 Experience the phases of the moon as your progress unfolds:
 
 ```python
 from telebar import MoonBar
 
-# Moon phase progress: < < < < <
+# Moon phase progress: 🌑 🌒 🌓 🌔 🌕
 async for item in progressify(range(12), 12).at(message).using(
     MoonBar(12, width=5, label="Lunar Progress")
 ):
@@ -65,10 +65,10 @@ async for item in progressify(range(12), 12).at(message).using(
 
 **Output:**
 ```
-Lunar Progress  <<<<<  7/12 (58.3%)
+Lunar Progress  🌕🌕🌔🌑🌑  7/12 (58.3%)
 ```
 
-### =� DefaultProgressBar - Classic Beauty
+### 📊 DefaultProgressBar - Classic Beauty
 Clean, professional progress tracking:
 
 ```python
@@ -79,10 +79,10 @@ async for item in progressify(your_data, total_count).at(message):
 
 **Output:**
 ```
-[������������������] 40.00%
+[████████        ] 40.00%
 ```
 
-## =' Advanced Usage
+## ⚙️ Advanced Usage
 
 ### Flexible Message Targeting
 Multiple ways to specify where your progress appears:
@@ -90,7 +90,7 @@ Multiple ways to specify where your progress appears:
 ```python
 # All equivalent - choose your style!
 progressify(data, count).at(message)
-progressify(data, count).for_(message)  
+progressify(data, count).for_(message)
 progressify(data, count).in_(message)
 ```
 
@@ -104,15 +104,15 @@ class FireBar:
     def __init__(self, length: int):
         self.length = length
         self._current_index = 0
-    
+
     def inc_index(self):
         if self._current_index < self.length:
             self._current_index += 1
-    
+
     async def update(self, message: Message):
         filled = self._current_index
         empty = self.length - filled
-        bar = "=%" * filled + "�" * empty
+        bar = "🔥" * filled + "·" * empty
         percent = (self._current_index / self.length) * 100
         line = f"{bar} {percent:.1f}%"
         await message.edit(text=message.text.unwrap_or("") + f"\n\n{line}")
@@ -135,22 +135,22 @@ moon_bar = MoonBar(
 )
 ```
 
-## <� Use Cases
+## 💡 Use Cases
 
 - **File Processing**: Show upload/download progress
-- **Data Analysis**: Track computation steps  
+- **Data Analysis**: Track computation steps
 - **Batch Operations**: Visualize bulk actions
 - **API Calls**: Monitor request processing
 - **Content Generation**: Track creation progress
 
-## < Why telebar?
+## ❓ Why telebar?
 
-- **<� Beautiful**: Eye-catching progress bars that users love
-- **� Fast**: Lightweight and efficient
-- **=' Flexible**: Easy to customize and extend
-- **< Unique**: Distinctive moon phase animations
-- **=� Telegram Native**: Built specifically for Telegram bots
+- **🎨 Beautiful**: Eye-catching progress bars that users love
+- **⚡ Fast**: Lightweight and efficient
+- **🔧 Flexible**: Easy to customize and extend
+- **✨ Unique**: Distinctive moon phase animations
+- **🤖 Telegram Native**: Built specifically for Telegram bots
 
-## =� License
+## 📄 License
 
-MIT License - Build amazing things! =�
+MIT License - Build amazing things! 🎉
